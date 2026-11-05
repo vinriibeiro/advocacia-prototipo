@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Identidade do escritório (fictício) Albuquerque & Prado Advogados
+   azul-carvão profundo · dourado sóbrio · off-white
+--------------------------------------------------------------------------- */
+@theme {
+  --color-brand-950: #0e151e;
+  --color-brand-900: #141d29;
+  --color-brand-800: #1b2735; /* barra lateral, títulos */
+  --color-brand-700: #253447;
+  --color-brand-600: #31445c;
+  --color-brand-500: #4a607c;
+
+  --color-accent-300: #e6d4a3;
+  --color-accent-400: #d6bd7c;
+  --color-accent-500: #c6a55c; /* dourado (botões, destaques) */
+  --color-accent-600: #a9894a;
+  --color-accent-700: #7f6534; /* dourado para texto em fundo claro (AA) */
+
+  --color-paper-50: #fdfcfa;
+  --color-paper-100: #f7f5f0; /* fundo */
+  --color-paper-200: #ece8df;
+  --color-paper-300: #dcd5c7;
+
+  --color-ink-900: #1b2735;
+  --color-ink-700: #3c4a5c;
+  --color-ink-500: #65727f;
+  --color-ink-400: #8a95a1;
+
+  /* status (reservados: sempre com ícone + rótulo) */
+  --color-ok-600: #15803d;
+  --color-ok-100: #dcfce7;
+  --color-warn-700: #b45309;
+  --color-warn-100: #fef3c7;
+  --color-danger-700: #b91c1c;
+  --color-danger-100: #fee2e2;
+  --color-info-700: #1d4ed8;
+  --color-info-100: #dbeafe;
+
+  /* séries de gráficos (validadas) */
+  --color-series-1: #b9891f;
+  --color-series-2: #2f6bb0;
+  --color-series-3: #c75b39;
+  --color-series-4: #6b5ba6;
+
+  --font-display: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-serif: 'DM Serif Display', 'Georgia', 'Times New Roman', serif;
+
+  --shadow-soft: 0 1px 2px rgb(27 39 53 / 0.04), 0 6px 20px -12px rgb(27 39 53 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(27 39 53 / 0.05), 0 20px 40px -20px rgb(27 39 53 / 0.25);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper-100 font-sans text-ink-900 antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility card {
+  @apply rounded-2xl border border-brand-800/8 bg-white shadow-soft;
+}
+
+@utility label-xs {
+  @apply text-[11px] font-semibold tracking-[0.08em] text-ink-500 uppercase;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(27 39 53 / 0.18) transparent;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.page-enter {
+  animation: fade-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
